@@ -1,16 +1,17 @@
 import React from 'react'
+import { Route,Routes } from 'react-router-dom'
 import Navbar from './Components/Navbar/Navbar.jsx'
-import Header from './Components/Header/Header.jsx'
-import Features from './Components/Features/Features.jsx'
-import MiniAbout from './Components/MiniAbout/MiniAbout.jsx'
+import Home from './pages/Home/Home.jsx'
+import AboutUs from './Components/AboutUs/AboutUs.jsx'
 import Footer from './Components/Footer/Footer.jsx'
 function App() {
   return (
     <div>
-      <Navbar/>
-      <Header/>
-      <Features/>
-      <MiniAbout/>
+    <Navbar/>
+     <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/about' element={<AboutUs/>}/>
+      </Routes>
       <Footer/>
     </div>
   )
