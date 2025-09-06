@@ -8,7 +8,7 @@ import {
   FaPhoneAlt,
   FaMapMarkerAlt,
 } from "react-icons/fa";
-
+import {Link} from "react-router-dom";
 const Footer = () => {
   const year = new Date().getFullYear();
 
@@ -27,7 +27,7 @@ const Footer = () => {
             <h4>Quick Links</h4>
             <ul>
               <li><a href="/">Home</a></li>
-              <li><a href="/#features">Why ResuMateAI</a></li>
+              <li><Link to="/#features">Why ResuMateAI</Link></li>
               <li><a href="/about">About Us</a></li>
             </ul>
           </div>

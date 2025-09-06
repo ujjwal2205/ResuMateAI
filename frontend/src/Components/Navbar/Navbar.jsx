@@ -1,7 +1,8 @@
 import React,{useState, useEffect} from 'react'
 import './Navbar.css'
+import {FaUserCircle} from "react-icons/fa";
 import {Link} from "react-router-dom";
-function Navbar() {
+function Navbar({login,setLogin}) {
     const [showDropdown,setShowDropdown]=useState(false);
    
   return (
@@ -23,7 +24,14 @@ function Navbar() {
         )}</div>
      </div>
      <div className='Right'>
-        <button className="loginBtn">Login / SignUp</button>
+        {login?(
+          <div className='user-icon' onClick={()=>{setLogin(!login)}}>
+          <FaUserCircle/>
+          </div>
+        )  
+        :(
+        <Link to="/login"><button className="loginBtn">Login / SignUp</button></Link>
+        )}
      </div>
     </div>
   )
