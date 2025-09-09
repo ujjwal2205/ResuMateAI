@@ -3,7 +3,7 @@ import {useLocation} from 'react-router-dom';
 import Header from '../../Components/Header/Header.jsx'
 import Features from '../../Components/Features/Features.jsx'
 import MiniAbout from '../../Components/MiniAbout/MiniAbout.jsx'
-function Home() {
+function Home({login}) {
   const location=useLocation();
   useEffect(()=>{
     if(location.hash){
@@ -19,7 +19,7 @@ function Home() {
   return (
     <div>
       
-      <Header/>
+      <Header login={login}/>
       <Features/>
       <MiniAbout/>
       

@@ -1,0 +1,129 @@
+.upload-root {
+  max-width: 640px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", Arial, sans-serif;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.upload-root:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: #111827;
+  letter-spacing: -0.5px;
+}
+
+/* Dropzone */
+.dropzone {
+  border: 2px dashed #d1d5db;
+  border-radius: 14px;
+  padding: 40px 20px;
+  margin-bottom: 28px;
+  background: #f9fafb;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.dropzone:hover {
+  border-color: #2563eb;
+  background: #f0f9ff;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+}
+
+.dropzone input[type="file"] {
+  display: block;
+  margin: 0 auto 12px auto;
+  font-size: 15px;
+  padding: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.dropzone input[type="file"]:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+.dropzone p {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Selected file name */
+.file-name {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
+}
+
+/* React-Select styling */
+.Select_JobRole {
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.Select_JobRole .react-select__control {
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  box-shadow: none;
+  min-height: 50px;
+}
+
+.Select_JobRole .react-select__control:hover {
+  border-color: #2563eb;
+}
+
+.Select_JobRole .react-select__menu {
+  border-radius: 12px;
+}
+
+.Select_JobRole .react-select__option--is-focused {
+  background-color: #f0f9ff;
+  color: #111827;
+}
+
+.Select_JobRole .react-select__option--is-selected {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+/* Action Button */
+.checkATS {
+  display: inline-block;
+  background: linear-gradient(90deg, #2563eb, #06b6d4);
+  color: #fff;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  text-decoration: none;
+}
+
+.checkATS:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.35);
+}
+
+.checkATS:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}

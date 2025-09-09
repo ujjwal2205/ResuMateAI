@@ -1,8 +1,8 @@
 import React from 'react'
 import './Header.css'
 import heroImg from "../../assets/ats-resume-checker-hero.png";
-
-function Header() {
+import {Link} from 'react-router-dom';
+function Header({login}) {
   return (
     <header className="header">
       <div className="header-background">
@@ -30,12 +30,21 @@ function Header() {
           </p>
           
           <div className="header-actions">
-            <button className="btn-primary">
+            {login?
+             <Link to={'/upload'} className="btn-primary">
               <span className="btn-text">Get Free ATS Score</span>
               <div className="btn-shine"></div>
-            </button>
+              </Link>
+            
+            :(
+             <Link to={'/login'} className="btn-primary">
+              <span className="btn-text">Get Free ATS Score</span>
+              <div className="btn-shine"></div>
+              </Link>
+            )}
+
             <button className="btn-secondary">
-              Explore Features
+              Prepare for Interview
             </button>
           </div>
           

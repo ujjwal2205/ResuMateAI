@@ -5,17 +5,22 @@ import Home from './pages/Home/Home.jsx'
 import AboutUs from './Components/AboutUs/AboutUs.jsx'
 import LoginPage from './pages/LoginPage/LoginPage.jsx'
 import SignUpPage from './pages/SignUpPage/SignUpPage.jsx'
+import ResumeCheckerUploadPage from './pages/ResumeCheckerUploadPage/ResumeCheckerUploadPage.jsx'
+import ATS_ScorePage from './pages/ATS_ScorePage/ATS_ScorePage.jsx'
 import Footer from './Components/Footer/Footer.jsx'
 function App() {
   const [login,setLogin]=useState(false);
+  const [fileUpload,setFileUpload]=useState(null);
   return (
     <div>
     <Navbar login={login} setLogin={setLogin}/>
      <Routes>
-      <Route path='/' element={<Home />}/>
+      <Route path='/' element={<Home login={login}/>}/>
       <Route path='/about' element={<AboutUs/>}/>
       <Route path='/login' element={<LoginPage login={login} setLogin={setLogin}/>}/>
       <Route path='/signup' element={<SignUpPage login={login} setLogin={setLogin}/>}/>
+      <Route path='/upload' element={<ResumeCheckerUploadPage fileUpload={fileUpload} setFileUpload={setFileUpload}/>}/>
+      <Route path='/score' element={<ATS_ScorePage/>}/>
       </Routes>
       <Footer/>
     </div>
