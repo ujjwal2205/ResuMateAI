@@ -17,8 +17,10 @@ function Navbar({login,setLogin}) {
         <button className='dropdown'>Services</button>
         {showDropdown&&(
         <div className='dropdown-content' onMouseLeave={()=>setShowDropdown(false)}>
-        <Link to="/resumeChecker" onClick={()=>setShowDropdown(false)}>Resume Checker</Link>
-        <Link to="/interviewPrep" onClick={()=>setShowDropdown(false)}>Interview Prep</Link>
+        {login?(<>
+        <Link to="/upload" onClick={()=>setShowDropdown(false)}>Resume Checker</Link>
+        <Link to="/questionsResume" onClick={()=>setShowDropdown(false)}>Interview Prep</Link></>):(<><Link to="/login" onClick={()=>setShowDropdown(false)}>Resume Checker</Link>
+        <Link to="/login" onClick={()=>setShowDropdown(false)}>Interview Prep</Link></>)}
         </div>
         )}</div>
      </div>

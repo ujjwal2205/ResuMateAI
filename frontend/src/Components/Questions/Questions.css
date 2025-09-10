@@ -1,0 +1,85 @@
+/* General Page Styling */
+.Questions {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Heading */
+.heading {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #111827;
+  letter-spacing: 0.5px;
+}
+
+/* Each Question Card */
+.question {
+  background: #ffffff;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.question:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+/* Question Text */
+.question h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+/* Answer Text */
+.question p {
+  font-size: 15px;
+  color: #374151;
+  margin-top: 12px;
+  line-height: 1.6;
+  border-left: 4px solid #2563eb;
+  padding-left: 12px;
+  background: #f3f4f6;
+  border-radius: 6px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Toggle Button */
+.SolutionButton {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.SolutionButton:hover {
+  background: #1e40af;
+}
+
+.SolutionButton:active {
+  transform: scale(0.97);
+}
+
+/* Smooth Answer Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}

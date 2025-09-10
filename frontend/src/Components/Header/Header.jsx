@@ -42,10 +42,18 @@ function Header({login}) {
               <div className="btn-shine"></div>
               </Link>
             )}
+            {login?
+            <Link to={'/questionsResume'} className="btn-secondary">
+            <span className='btn-text'>Prepare for Interview</span>
+            </Link>
+            :(
+              <Link to={'/login'} className='btn-secondary'>
+                <span className='btn-text'>Prepare for Interview</span>
+              </Link>
+            )
+            
 
-            <button className="btn-secondary">
-              Prepare for Interview
-            </button>
+            }
           </div>
           
           <div className="trust-indicators">
