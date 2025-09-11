@@ -1,19 +1,69 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import {FaTimes} from "react-icons/fa";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import {GoogleLogin} from "@react-oauth/google";
+import {StoreContext} from '../../context/StoreContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify'
+import axios from "axios"
 import './Login.css'
 function Login({login,setLogin}) {
     const navigate=useNavigate();
+    const {url}=useContext(StoreContext);
     const [showPassword,setShowPassword]=useState(false);
+    const [data,setData]=useState(
+      {email:"",
+       password:""
+      }
+    )
     const handleCross=()=>{
         setLogin(false);
         navigate('/');
     }
     const handleSubmit=async(e)=>{
      e.preventDefault();
-     setLogin(true);
-     navigate('/');
+     try {
+       const response=await axios.post(url+"/api/user/login",data);
+       if(response.data.success){
+        setLogin(true);
+        navigate('/',{state:{toastMessage:"Login Successful!"}});
+       }
+       else{
+        setLogin(false);
+        toast.error(response.data.message);
+       }
+     } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+     }
+    }
+    const handleSuccess=async (CredentialResponse)=>{
+      const token=CredentialResponse.credential;
+      try{
+      const response=await axios.post(url+"/api/user/googleLogin",{
+        idToken:token,
+      })
+      if(response.data.success){
+        setLogin(true);
+        navigate('/',{state:{toastMessage:"Login Successful!"}});
+      }
+      else{
+        setLogin(false);
+        toast.error(response.data.message);
+      }
+      }
+      catch(error){
+        console.log(error);
+        toast.error(error.message);
+      }
+    }
+    const handleError=async()=>{
+      console.log("Google login is not working.Try again later!");
+    }
+    const handleChange=async(e)=>{
+      const name=e.target.name;
+      const value=e.target.value;
+      setData({...data,[name]:value});
     }
   return (
     <div className='login-box'>
@@ -27,6 +77,7 @@ function Login({login,setLogin}) {
         name='email'
         type='email'
         placeholder='Your Email*'
+        onChange={handleChange}
         required
         />
         <div className='password-wrapper'>
@@ -35,6 +86,7 @@ function Login({login,setLogin}) {
             name="password"
             type={showPassword?"text":"password"}
             placeholder='Your Password*'
+            onChange={handleChange}
             required
             />
             <span onClick={()=>setShowPassword(prev=>!prev)}>{showPassword?<FaEyeSlash/>:<FaEye/>}</span>
@@ -45,6 +97,12 @@ function Login({login,setLogin}) {
         <button type="submit" className="submit-button" >Submit</button>
       </form>
       <p className="or-text">OR</p>
+      <div className='google-login'>
+        <GoogleLogin
+         onSuccess={handleSuccess}
+         onError={handleError}
+         />
+      </div>
       <p className="signup-link">
         Don't have an account? <a href="/signup">Sign Up</a>
       </p>

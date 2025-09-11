@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { Route,Routes } from 'react-router-dom'
+import {ToastContainer} from 'react-toastify'
 import Navbar from './Components/Navbar/Navbar.jsx'
 import Home from './pages/Home/Home.jsx'
 import AboutUs from './Components/AboutUs/AboutUs.jsx'
@@ -15,6 +16,7 @@ function App() {
   const [fileUpload,setFileUpload]=useState(null);
   return (
     <div>
+    <ToastContainer/>
     <Navbar login={login} setLogin={setLogin}/>
      <Routes>
       <Route path='/' element={<Home login={login}/>}/>
