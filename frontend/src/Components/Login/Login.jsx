@@ -65,6 +65,27 @@ function Login({login,setLogin}) {
       const value=e.target.value;
       setData({...data,[name]:value});
     }
+    const handleForgotPassword=async()=>{
+      try {
+        toast.success("Checking your email");
+        if(!data.email){
+          toast.error("Please Enter your Email");
+          return;
+        }
+        const response=await axios.post(url+"/api/forgot-password/otp",{
+          email:data.email
+        })
+        if(response.data.success){
+          navigate("/forgot-password",{state:{toastMessage:response.data.message,email:data.email}});
+        }
+        else{
+          toast.error(response.data.message);
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error(error.message);
+      }
+    }
   return (
     <div className='login-box'>
       <div className='close-button'>
@@ -92,7 +113,7 @@ function Login({login,setLogin}) {
             <span onClick={()=>setShowPassword(prev=>!prev)}>{showPassword?<FaEyeSlash/>:<FaEye/>}</span>
         </div>
          <div className="forgot-password-box">
-          <button type="button" className="forgot-password">Forgot your password?</button>
+          <button type="button" className="forgot-password" onClick={handleForgotPassword}>Forgot your password?</button>
         </div>
         <button type="submit" className="submit-button" >Submit</button>
       </form>

@@ -10,6 +10,7 @@ import ResumeCheckerUploadPage from './pages/ResumeCheckerUploadPage/ResumeCheck
 import ATS_ScorePage from './pages/ATS_ScorePage/ATS_ScorePage.jsx'
 import QuestionsResumePage from './pages/QuestionsResumePage/QuestionsResumePage.jsx'
 import Questions from './Components/Questions/Questions.jsx'
+import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage.jsx'
 import Footer from './Components/Footer/Footer.jsx'
 function App() {
   const [login,setLogin]=useState(false);
@@ -27,6 +28,7 @@ function App() {
       <Route path='/score' element={<ATS_ScorePage/>}/>
       <Route path='/questionsResume' element={<QuestionsResumePage/>}/>
       <Route path='/questions' element={<Questions/>}/>
+      <Route path='/forgot-password' element={<ForgotPasswordPage/>}/>
       </Routes>
       <Footer/>
     </div>

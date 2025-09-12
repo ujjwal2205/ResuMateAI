@@ -39,10 +39,10 @@ const signUpUser=async(req,res)=>{
         })
         await newUser.save();
         const token=createToken(normalizedEmail);
-        res.json({success:true,token});
+        return res.json({success:true,token});
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:error.message});
+       return res.json({success:false,message:error.message});
     }
 }
 //login
@@ -52,20 +52,20 @@ const login=async(req,res)=>{
         const normalizedEmail=email.toLowerCase();
         const user=await userModel.findOne({email:normalizedEmail});
         if(!user){
-            res.json({success:false,message:"User doesn't exist"});
+            return res.json({success:false,message:"User doesn't exist"});
         }
         if(user.authType==="google"){
-            res.json({success:false,message:"Please login via Google Sign-in"});
+            return res.json({success:false,message:"Please login via Google Sign-in"});
         }
         const isMatch=await bcrypt.compare(password,user.password);
         if(!isMatch){
-            res.json({success:false,message:"Invalid Credentials"});
+            return res.json({success:false,message:"Invalid Credentials"});
         }
         const token=createToken(normalizedEmail);
-        res.json({success:true,token});
+        return res.json({success:true,token});
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:error.message})
+        return res.json({success:false,message:error.message})
     }
 }
 //googleLogin
@@ -86,10 +86,10 @@ const googleLogin=async(req,res)=>{
             await user.save();
         }
         const token=createToken(normalizedEmail);
-        res.json({success:true,token});
+        return res.json({success:true,token});
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:error.message});
+        return res.json({success:false,message:error.message});
     }
 }
 export {signUpUser,login,googleLogin}
