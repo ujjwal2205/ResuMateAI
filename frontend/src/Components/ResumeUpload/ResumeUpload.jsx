@@ -1,12 +1,16 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react';
+import axios from "axios";
+import { toast } from 'react-toastify';
 import './ResumeUpload.css'
 import { Link,useNavigate } from 'react-router-dom'
+import { StoreContext } from '../../context/StoreContext.jsx';
 import Select from 'react-select'
 import {jobOptions} from '../../assets/assets.js'
 function ResumeUpload({fileUpload,setFileUpload}) {
     const navigate=useNavigate();
     const [jobTitle,setJobTitle]=useState(null);
-    const handleSubmit=()=>{
+    const {url}=useContext(StoreContext);
+    const handleSubmit=async()=>{
         if(!fileUpload){
             alert("Upload your resume");
             return;
@@ -15,7 +19,22 @@ function ResumeUpload({fileUpload,setFileUpload}) {
             alert("Select your job Title");
             return;
         }
-       navigate('/score',{state:{fileUpload}});
+        const formData=new FormData();
+        formData.append("resume",fileUpload);
+        formData.append("jobTitle",jobTitle);
+        try {
+          const response=await axios.post(url+"/api/ats-score/fetch-ats-score",formData,
+            {headers:{"Content-Type":"multipart/form-data"}}
+          );
+          if(response.data.success){
+            const data=response.data.data;
+            const message=response.data.message;
+            navigate('/score',{state:{fileUpload,data,message}});
+          }
+        } catch (error) {
+          console.log(error);
+          toast.error(error.message);
+        }
     }
   return (
     <div className='upload-root'>

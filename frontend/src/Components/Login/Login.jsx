@@ -67,11 +67,11 @@ function Login({login,setLogin}) {
     }
     const handleForgotPassword=async()=>{
       try {
-        toast.success("Checking your email");
         if(!data.email){
           toast.error("Please Enter your Email");
           return;
         }
+        toast.success("Checking your email");
         const response=await axios.post(url+"/api/forgot-password/otp",{
           email:data.email
         })

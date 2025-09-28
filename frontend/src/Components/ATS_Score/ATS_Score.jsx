@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { toast } from "react-toastify";
 import * as pdfjsLib from "pdfjs-dist";
 /*Ye PDF.js ka main entry point hai.
 Isme sari functions hote hain jaise:
@@ -36,14 +37,13 @@ import './ATS_Score.css'
 import { resumeSuggestions } from '../../assets/assets.js'
 import { useLocation } from 'react-router-dom';
 function ATS_Score() {
-    const score = 90;
     const location=useLocation();
-    const {fileUpload}=location.state;
+    const {fileUpload,data,message}=location.state;
    const canvasRef = useRef(null);
 
   useEffect(() => {
     if (!fileUpload) return;
-
+    toast.success(message);
     const fileReader = new FileReader();
     fileReader.onload = function () {
       const typedArray = new Uint8Array(this.result);
@@ -78,19 +78,18 @@ function ATS_Score() {
       <div className='right-side'>
       <div className='result'>
         <h2 className='ATS_Score'>Your ATS score is</h2>
-        <span>90</span>
-        <p>This is a good score.Let's dive into what we checked your resume for and how you can improve your resume</p>
+        <span>{data.ats_score}</span>
+        <p>{data.ats_score_suggestion}</p>
         <div className='green-red-bar'>
         <div className='score-pointer'
-        style={{ left: `${score}%` }}
+        style={{ left: `${data.ats_score}%` }}
         ></div>
         </div>
       </div>
       <div className='Suggestions'>
-        {resumeSuggestions.map((sug,idx)=>(
+        {data.suggestions.map((sug,idx)=>(
             <div key={idx} className='suggestion-card'>
-                <h3>{sug.title}</h3>
-                <p>{sug.body}</p>
+                <p>{sug}</p>
             </div>
         ))}
       </div>
