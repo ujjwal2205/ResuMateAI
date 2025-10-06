@@ -34,6 +34,7 @@ function SignUp({login,setLogin}) {
       const response=await axios.post(url+"/api/user/signUp",data);
       if(response.data.success){
         setLogin(true);
+        localStorage.setItem("token",response.data.token);
         navigate('/',{state:{toastMessage:"SignUp Successful!"}});
       }
       else{

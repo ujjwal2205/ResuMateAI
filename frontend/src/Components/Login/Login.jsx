@@ -26,6 +26,7 @@ function Login({login,setLogin}) {
        const response=await axios.post(url+"/api/user/login",data);
        if(response.data.success){
         setLogin(true);
+        localStorage.setItem("token",response.data.token);
         navigate('/',{state:{toastMessage:"Login Successful!"}});
        }
        else{
@@ -45,6 +46,7 @@ function Login({login,setLogin}) {
       })
       if(response.data.success){
         setLogin(true);
+        localStorage.setItem("token",response.data.token);
         navigate('/',{state:{toastMessage:"Login Successful!"}});
       }
       else{

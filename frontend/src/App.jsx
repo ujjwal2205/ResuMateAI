@@ -1,6 +1,7 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { Route,Routes } from 'react-router-dom'
 import {ToastContainer} from 'react-toastify'
+import { StoreContext } from './context/StoreContext.jsx'
 import Navbar from './Components/Navbar/Navbar.jsx'
 import Home from './pages/Home/Home.jsx'
 import AboutUs from './Components/AboutUs/AboutUs.jsx'
@@ -11,9 +12,11 @@ import ATS_ScorePage from './pages/ATS_ScorePage/ATS_ScorePage.jsx'
 import QuestionsResumePage from './pages/QuestionsResumePage/QuestionsResumePage.jsx'
 import Questions from './Components/Questions/Questions.jsx'
 import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage.jsx'
+import User_InformationPage from './pages/User_InformationPage/User_InformationPage.jsx'
 import Footer from './Components/Footer/Footer.jsx'
 function App() {
-  const [login,setLogin]=useState(false);
+  const{token}=useContext(StoreContext);
+  const [login,setLogin]=useState(()=>token?true:false);
   const [fileUpload,setFileUpload]=useState(null);
   return (
     <div>
@@ -29,6 +32,7 @@ function App() {
       <Route path='/questionsResume' element={<QuestionsResumePage/>}/>
       <Route path='/questions' element={<Questions/>}/>
       <Route path='/forgot-password' element={<ForgotPasswordPage/>}/>
+      <Route path='/user-information' element={<User_InformationPage/>}/>
       </Routes>
       <Footer/>
     </div>

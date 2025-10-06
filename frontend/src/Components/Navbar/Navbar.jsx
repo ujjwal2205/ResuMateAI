@@ -19,14 +19,18 @@ function Navbar({login,setLogin}) {
         <div className='dropdown-content' onMouseLeave={()=>setShowDropdown(false)}>
         {login?(<>
         <Link to="/upload" onClick={()=>setShowDropdown(false)}>Resume Checker</Link>
-        <Link to="/questionsResume" onClick={()=>setShowDropdown(false)}>Interview Prep</Link></>):(<><Link to="/login" onClick={()=>setShowDropdown(false)}>Resume Checker</Link>
-        <Link to="/login" onClick={()=>setShowDropdown(false)}>Interview Prep</Link></>)}
+        <Link to="/questionsResume" onClick={()=>setShowDropdown(false)}>Interview Prep</Link>
+        <Link to="/user-information" onClick={()=>setShowDropdown(false)}>Resume Generator</Link>
+        </>):(<><Link to="/login" onClick={()=>setShowDropdown(false)}>Resume Checker</Link>
+        <Link to="/login" onClick={()=>setShowDropdown(false)}>Interview Prep</Link>
+        <Link to="/login" onClick={()=>setShowDropdown(false)}>Resume Generator</Link>
+        </>)}
         </div>
         )}</div>
      </div>
      <div className='Right'>
         {login?(
-          <div className='user-icon' onClick={()=>{setLogin(!login)}}>
+          <div className='user-icon' onClick={()=>{setLogin(!login);localStorage.removeItem("token")}}>
           <FaUserCircle/>
           </div>
         )  

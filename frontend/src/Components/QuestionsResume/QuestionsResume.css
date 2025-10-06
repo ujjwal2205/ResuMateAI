@@ -87,3 +87,41 @@
   transform: scale(0.97);
   opacity: 0.9;
 }
+.Spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* space between spinner and text */
+  font-family: 'Arial', sans-serif;
+  color: #04040a; /* Indigo text color */
+  text-align: center;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+
+.Spinner p {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Spinner circle */
+.Spinner::before {
+  content: '';
+  width: 60px;
+  height: 60px;
+  border: 6px solid #e5e7eb; /* Light gray border */
+  border-top-color: #4f46e5; /* Indigo top for spinning effect */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Smooth spin animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

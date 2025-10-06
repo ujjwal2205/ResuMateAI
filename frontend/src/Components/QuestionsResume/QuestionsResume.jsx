@@ -6,17 +6,19 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 function QuestionsResume() {
    const [resume,uploadResume]=useState(null);
-    const {url}=useContext(StoreContext);
+    const {url,token,setToken}=useContext(StoreContext);
+    const [spinner,setSpinner]=useState(false);
     const navigate=useNavigate();
    const handleSubmit=async()=>{
     if(!resume){
       alert("Upload your resume");
       return;
     }
+    setSpinner(true);
     const formData=new FormData();
     formData.append("resume",resume);
     const response=await axios.post(url+"/api/questions/fetch-questions",formData,{
-      headers:{"Content-Type":"multipart/form-data"}
+      headers:{Authorization:`Bearer ${token}`}
     })
     try {
       if(response.data.success){
@@ -34,6 +36,10 @@ function QuestionsResume() {
     }
    }
   return (
+    <>{
+      spinner?<div className='Spinner'>
+      <p>Generating ATS Score and Suggestions for you</p>
+    </div>:
     <div className='questionsResume'>
       <div className='input'>
         <h2 className='title'>Upload Your Resume</h2>
@@ -48,6 +54,8 @@ function QuestionsResume() {
       </div>
       <button className='generateQuestions' onClick={handleSubmit}>Generate Questions</button>
     </div>
+    }
+    </>
   )
 }
 

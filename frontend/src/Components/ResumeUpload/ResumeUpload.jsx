@@ -9,7 +9,8 @@ import {jobOptions} from '../../assets/assets.js'
 function ResumeUpload({fileUpload,setFileUpload}) {
     const navigate=useNavigate();
     const [jobTitle,setJobTitle]=useState(null);
-    const {url}=useContext(StoreContext);
+    const {url,token,setToken}=useContext(StoreContext);
+    const [spinner,setSpinner]=useState(false);
     const handleSubmit=async()=>{
         if(!fileUpload){
             alert("Upload your resume");
@@ -19,12 +20,15 @@ function ResumeUpload({fileUpload,setFileUpload}) {
             alert("Select your job Title");
             return;
         }
+        setSpinner(true);
         const formData=new FormData();
         formData.append("resume",fileUpload);
         formData.append("jobTitle",jobTitle);
         try {
           const response=await axios.post(url+"/api/ats-score/fetch-ats-score",formData,
-            {headers:{"Content-Type":"multipart/form-data"}}
+            {headers:{
+            Authorization:`Bearer ${token}`}
+          }
           );
           if(response.data.success){
             const data=response.data.data;
@@ -37,6 +41,12 @@ function ResumeUpload({fileUpload,setFileUpload}) {
         }
     }
   return (
+    <>
+    {spinner?
+    <div className='Spinner'>
+      <p>Generating ATS Score and Suggestions for you</p>
+    </div>
+    :
     <div className='upload-root'>
       <h2 className='title'>Upload your resume</h2>
       <div className='dropzone'>
@@ -58,6 +68,7 @@ function ResumeUpload({fileUpload,setFileUpload}) {
       </div>
       <button className='checkATS' onClick={handleSubmit}>Check ATS Score</button>
     </div>
+    }</>
   )
 }
 

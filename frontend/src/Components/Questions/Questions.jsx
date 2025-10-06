@@ -9,7 +9,6 @@ function Questions() {
   const {data,message}=location.state;
   useEffect(()=>{
     toast.success(message);
-    
   },[message])
   return (
     <div className='Questions'>
@@ -21,8 +20,8 @@ function Questions() {
             {visible===idx?"Hide Answer":"Show Answer"}
         </button>
         {visible===idx &&<p>{que.answer}</p>}
-        </div>
-      ))}
+        </div>)
+      )}
     </div>
   )
 }

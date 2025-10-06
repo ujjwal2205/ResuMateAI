@@ -23,11 +23,11 @@ const QuestionsGeneratorController=async(req,res)=>{
                         {
                         question: "...",
                         answer:"..."
-                        }
+                        },
                         {
                         question: "...",
                         answer:"..."
-                        }
+                        },
                         {
                         question:"...",
                         answer:"..."}
