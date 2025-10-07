@@ -13,6 +13,7 @@ import QuestionsResumePage from './pages/QuestionsResumePage/QuestionsResumePage
 import Questions from './Components/Questions/Questions.jsx'
 import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage.jsx'
 import User_InformationPage from './pages/User_InformationPage/User_InformationPage.jsx'
+import TemplatesPage from './pages/TemplatesPage/TemplatesPage.jsx'
 import Footer from './Components/Footer/Footer.jsx'
 function App() {
   const{token}=useContext(StoreContext);
@@ -33,6 +34,7 @@ function App() {
       <Route path='/questions' element={<Questions/>}/>
       <Route path='/forgot-password' element={<ForgotPasswordPage/>}/>
       <Route path='/user-information' element={<User_InformationPage/>}/>
+      <Route path='/templates' element={<TemplatesPage/>}/>
       </Routes>
       <Footer/>
     </div>

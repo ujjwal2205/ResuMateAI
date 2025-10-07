@@ -16,7 +16,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  position: sticky;
   top: 40px;
 }
 
@@ -172,4 +171,414 @@
     font-size: 13px;
     padding: 10px;
   }
+}
+/* ---------- Social Links Header ---------- */
+.socialLinksHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.socialLinksHeader h2 {
+  color: #111827;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Add Link Button (now inside header) */
+.Add_Inputs {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.Add_Inputs:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* ---------- Social Links Input Layout ---------- */
+.socialLinkInput {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.socialLinkInput input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #f9fafb;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.socialLinkInput input:focus {
+  border-color: #2563eb;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.socialLinkInput button {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.25s ease;
+}
+
+.socialLinkInput button:hover {
+  background-color: #dc2626;
+}
+/* ---------- Experience Section ---------- */
+.experienceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.experienceHeader h2 {
+  color: #111827;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Add Experience Button */
+.Add_Inputs {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.Add_Inputs:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Each Experience Card */
+.experienceCard {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.experienceCard:hover {
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Remove Button */
+.removeExperienceBtn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-end;
+  font-size: 14px;
+  transition: background-color 0.25s ease;
+}
+
+.removeExperienceBtn:hover {
+  background-color: #dc2626;
+}
+/* ---------- Projects Section ---------- */
+.projectsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.projectsHeader h2 {
+  color: #111827;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Add Project Button (same as experience add) */
+.Add_Inputs {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.Add_Inputs:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Project Card Box */
+.projectCard {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.projectCard:hover {
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Input Fields inside project card */
+.inputField {
+  width: 100%;
+  min-height: 40px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inputField:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Remove Button */
+.removeProjectBtn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-end;
+  font-size: 14px;
+  transition: background-color 0.25s ease;
+}
+
+.removeProjectBtn:hover {
+  background-color: #dc2626;
+}
+/* Achievements Header */
+.Achievement-Header {
+  display: flex;
+  justify-content: space-between; /* heading left, add button right */
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.Achievement-Header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.Achievement-Header .Add_Inputs {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.Achievement-Header .Add_Inputs:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* All Achievement Cards Column */
+.Achievement-Cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Individual Achievement Card */
+.Achievement-Card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f9fafb;
+}
+
+.Achievement-Card textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.Achievement-Card textarea:focus {
+  border-color: #2563eb;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* Remove Button */
+.Achievement-Card button {
+  align-self: flex-start; /* left side below textarea */
+  background-color: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+.Achievement-Card button:hover {
+  background-color: #b91c1c;
+}
+/* ---------- ExtraCurricular Activities Header ---------- */
+.Extra_Curricular_Activities_Header {
+  display: flex;
+  justify-content: space-between; /* heading left, add button right */
+  align-items: center;
+  margin-top: 10px;
+}
+
+.Extra_Curricular_Activities_Header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.Extra_Curricular_Activities_Header .Add_Inputs {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.Extra_Curricular_Activities_Header .Add_Inputs:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Cards container */
+.Extra_Curricular_Activities_Cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Individual card */
+.Extra_Curricular_Activities_Card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f9fafb;
+}
+
+.Extra_Curricular_Activities_Card textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.Extra_Curricular_Activities_Card textarea:focus {
+  border-color: #2563eb;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* Remove button */
+.Extra_Curricular_Activities_Card button {
+  align-self: flex-start; /* left below textarea */
+  background-color: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+.Extra_Curricular_Activities_Card button:hover {
+  background-color: #b91c1c;
+}
+.submit {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  margin-top: 24px;       /* Space from above content */
+}
+
+.submit_button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background-color: #4f46e5; /* Indigo color */
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submit_button:hover {
+  background-color: #4338ca; /* Darker on hover */
 }
