@@ -1,0 +1,93 @@
+.resumeContainer2 {
+  max-width: 950px;
+  margin: 40px auto;
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+  background: #fff;
+  padding: 30px 40px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.resumeHeader2 {
+  text-align: center;
+  border-bottom: 2px solid #4b5563;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.resumeHeader2 h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.contactInfo {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.socialLinks {
+  font-size: 14px;
+  color: #1e3a8a;
+}
+
+.socialLinks svg {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.resumeBody2 {
+  display: flex;
+  gap: 30px;
+}
+
+.leftColumn2 {
+  flex: 1;
+  border-right: 1px solid #d1d5db;
+  padding-right: 25px;
+}
+
+.rightColumn2 {
+  flex: 2;
+  padding-left: 25px;
+}
+
+.section2 {
+  margin-bottom: 25px;
+}
+
+.section2 h2 {
+  font-size: 18px;
+  color: #1f2937;
+  border-bottom: 2px solid #d1d5db;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+.experienceItem2, .projectItem2, .educationItem2 {
+  margin-bottom: 15px;
+}
+
+.experienceItem2 h3, .projectItem2 h3, .educationItem2 h3 {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+.experienceItem2 span, .educationItem2 span {
+  font-size: 14px;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 6px;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 5px;
+  font-size: 14px;
+}

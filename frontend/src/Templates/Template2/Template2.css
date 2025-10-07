@@ -1,0 +1,70 @@
+.resumeContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+  line-height: 1.5;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.resumeHeader {
+  text-align: center;
+  border-bottom: 2px solid #4b5563;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.resumeHeader h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.headerInfo span {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.resumeSection {
+  margin-bottom: 20px;
+}
+
+.resumeSection h2 {
+  font-size: 20px;
+  color: #1f2937;
+  border-bottom: 1px solid #d1d5db;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+}
+
+.experienceItem, .projectItem, .educationItem {
+  margin-bottom: 12px;
+}
+
+.experienceItem h3, .projectItem h3, .educationItem h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.experienceItem span, .educationItem span {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.skillsList, .achievementsList, .extraList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skillsList li, .achievementsList li, .extraList li {
+  background-color: #f3f4f6;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}

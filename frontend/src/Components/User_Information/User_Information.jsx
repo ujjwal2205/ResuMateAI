@@ -88,6 +88,7 @@ function User_Information() {
                 'Contact No',
                 'Email',
                 'Social Links',
+                'Summary',
                 'Education',
                 'Experience',
                 'Projects',
@@ -201,6 +202,18 @@ function User_Information() {
        ))}
        </>
        )}
+       {
+        selectedSections.includes('Summary') && (
+          <>
+          <h2>Summary</h2>
+          <textarea
+          className='inputField'
+          type="text"
+          placeholder='Enter the summary'
+          />
+          </>
+        )
+       }
        {selectedSections.includes('Education') && (
         <>
         <h2>Education</h2>
