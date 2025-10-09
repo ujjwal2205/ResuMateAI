@@ -7,6 +7,7 @@ import passwordReset from "./Routes/passwordResetRoute.js";
 import Verification from "./Routes/OTPVerificationRoute.js";
 import ATSScore from "./Routes/ATSScoreGeneratorRoute.js";
 import Questions from "./Routes/QuestionGeneratorRoute.js";
+import ResumeRouter from "./Routes/ResumeGeneratorRoute.js";
 const app=express();
 const port=4000
 
@@ -17,6 +18,7 @@ app.use("/api/forgot-password",passwordReset);
 app.use("/api/OTP",Verification);
 app.use("/api/ats-score",ATSScore);
 app.use("/api/questions",Questions);
+app.use("/api/resume",ResumeRouter);
 connectDB();
 app.get("/",(req,res)=>{
 res.send("API WORKING")

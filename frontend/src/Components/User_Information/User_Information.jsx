@@ -1,6 +1,65 @@
 import React, { useState } from 'react';
 import './User_Information.css';
 import {useNavigate} from 'react-router-dom';
+function prepareResume(selectedSections,links,experiences,projects,achievements,extraCurricularActivities,name,contactNo,email,summary,education,skills){
+const sectionsData={};
+if(selectedSections.includes("Full Name")){
+  sectionsData.FullName=name;
+}
+if(selectedSections.includes("Contact No")){
+  sectionsData.ContactNo=contactNo;
+}
+if(selectedSections.includes("Email")){
+  sectionsData.Email=email;
+}
+if(selectedSections.includes("Social Links")){
+  sectionsData.Social_Links=links.map(link=>({
+  Platform:link.platform,
+  Hyperlink:link.url
+  }));
+}
+if(selectedSections.includes("Summary")){
+  sectionsData.Summary=summary;
+}
+if(selectedSections.includes("Education")){
+sectionsData.Education=({
+  College_Name:education[0].college,
+  Graduation_Duration:education[0].Graduation_Duration,
+  Degree:education[0].Degree,
+  CGPA:education[0].CGPA,
+})
+}
+if(selectedSections.includes("Experience")){
+  sectionsData.Experiences=experiences.map(experience=>({
+    Company_Name:experience.name,
+    Job_Duration:experience.duration,
+    Job_Role:experience.role,
+    Job_Description:experience.description
+  }))
+}
+if(selectedSections.includes("Projects")){
+  sectionsData.Projects=projects.map(project=>({
+  Project_Name:project.name,
+  Projects_HyperLink:project.link,
+  Projects_Description:project.description,
+  Project_Technology_Used:project.technologyUsed
+  }))
+}
+if(selectedSections.includes("Skills")){
+  sectionsData.Skills=skills
+}
+if(selectedSections.includes("Achievements")){
+  sectionsData.Achievements=achievements.map(achievement=>({
+  Achievement:achievement.text
+  }))
+}
+if(selectedSections.includes("ExtraCurricular Activities")){
+  sectionsData.ExtraCurricularActivities=extraCurricularActivities.map(extra=>({
+    ExtraCurricularActivitiy:extra.text
+  }))
+}
+return sectionsData;
+}
 function User_Information() {
   const [showAddDropdown, setShowAddDropdown] = useState(false);
   const [showRemoveDropdown, setShowRemoveDropdown] = useState(false);
@@ -10,12 +69,19 @@ function User_Information() {
   const [projects,setProjects]=useState([{name:"",link:"",description:"",technologyUsed:""}])
   const [achievements,setAchievements]=useState([{text:""}]);
   const [extraCurricularActivities,setExtraCurricularActivities]=useState([{text:""}]);
+  const [name,setName]=useState("");
+  const [contactNo,setContact]=useState("");
+  const [email,setEmail]=useState("");
+  const [summary,setSummary]=useState("");
+  const [education,setEducation]=useState([{college:"",Graduation_Duration:"",Degree:"",CGPA:""}]);
+  const [skills,setSkills]=useState("")
   const navigate=useNavigate();
   const handleAddExtraCurricularActivities=()=>{
     setExtraCurricularActivities([...extraCurricularActivities,{text:""}]);
   }
   const handleSubmit=()=>{
-  navigate('/templates');
+  const data=prepareResume(selectedSections,links,experiences,projects,achievements,extraCurricularActivities,name,contactNo,email,summary,education,skills);
+  navigate('/templates',{state:{data:data,selectedSections:selectedSections}});
   }
   const handleRemoveExtraCurricularActivities=(index)=>{
     const newExtra=[...extraCurricularActivities];
@@ -141,6 +207,7 @@ function User_Information() {
                 <input
                   className="inputField"
                   placeholder="Enter your full name"
+                  onChange={(e)=>setName(e.target.value)}
                 />
                 </>
               )
@@ -151,7 +218,9 @@ function User_Information() {
                   <h2>Contact No</h2>
                   <input
                   className='inputField'
-                  placeholder='Enter your ContactNo.'/>
+                  placeholder='Enter your ContactNo.'
+                    onChange={(e)=>setContact(e.target.value)}
+                  />
                   </>
                 )
               }
@@ -162,7 +231,7 @@ function User_Information() {
                   <input
                   className='inputField'
                   placeholder='Enter your Email'
-                  type='email'
+                  onChange={(e)=>setEmail(e.target.value)}
                   />
                   </>
                 )
@@ -210,6 +279,7 @@ function User_Information() {
           className='inputField'
           type="text"
           placeholder='Enter the summary'
+          onChange={(e)=>setSummary(e.target.value)}
           />
           </>
         )
@@ -221,19 +291,40 @@ function User_Information() {
         className='inputField'
          type="text"
          placeholder='Enter your college name'
+         onChange={(e)=>{
+         const updated=[...education]
+         updated[0].college=e.target.value;
+         setEducation(updated);
+         }}
          />
          <input
          className='inputField'
          type='text'
          placeholder='Enter you Graduation Duration (e.g 2023-2027)'
+         onChange={(e)=>{
+         const updated=[...education]
+         updated[0].Graduation_Duration=e.target.value;
+         setEducation(updated);
+         }}
          />
          <input
          className='inputField'
          placeholder='Enter your degree (e.g B.TECH-Computer Science and Engineering)'
-         type='text'/>
+         type='text'
+         onChange={(e)=>{
+         const updated=[...education]
+         updated[0].Degree=e.target.value;
+         setEducation(updated);
+         }} 
+         />
          <input
          className='inputField'
          placeholder='Enter your CGPA'
+         onChange={(e)=>{
+         const updated=[...education]
+         updated[0].CGPA=e.target.value;
+         setEducation(updated);
+         }}
          type='text'/>
         </>
        )}
@@ -367,6 +458,7 @@ function User_Information() {
       <textarea
       className='inputField'
       placeholder='Enter the skills (e.g HTML,CSS)'
+      onChange={(e)=>setSkills(e.target.value)}
       />
       </>
      )}
