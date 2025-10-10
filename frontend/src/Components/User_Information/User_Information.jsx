@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
+import { StoreContext } from '../../context/StoreContext.jsx';
 import './User_Information.css';
-import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 function prepareResume(selectedSections,links,experiences,projects,achievements,extraCurricularActivities,name,contactNo,email,summary,education,skills){
 const sectionsData={};
 if(selectedSections.includes("Full Name")){
@@ -75,13 +77,37 @@ function User_Information() {
   const [summary,setSummary]=useState("");
   const [education,setEducation]=useState([{college:"",Graduation_Duration:"",Degree:"",CGPA:""}]);
   const [skills,setSkills]=useState("")
-  const navigate=useNavigate();
+  const {url}=useContext(StoreContext);
+  const downloadPdf = (pdfBase64, fileName = "resume.pdf") => {
+  // Directly use data URL to avoid atob errors
+  const link = document.createElement("a");
+  link.href = `data:application/pdf;base64,${pdfBase64}`;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
   const handleAddExtraCurricularActivities=()=>{
     setExtraCurricularActivities([...extraCurricularActivities,{text:""}]);
   }
-  const handleSubmit=()=>{
+  const handleSubmit=async()=>{
   const data=prepareResume(selectedSections,links,experiences,projects,achievements,extraCurricularActivities,name,contactNo,email,summary,education,skills);
-  navigate('/templates',{state:{data:data,selectedSections:selectedSections}});
+  try {
+      const response = await axios.post(url + "/api/resume/generator", {
+        information: data,
+        sections: selectedSections
+      });
+
+      if (response.data.success) {
+        toast.success(response.data.message);
+        downloadPdf(response.data.pdf, "My_Resume.pdf");
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data?.message || error.message || "Something went wrong");
+    } 
   }
   const handleRemoveExtraCurricularActivities=(index)=>{
     const newExtra=[...extraCurricularActivities];
@@ -527,7 +553,7 @@ function User_Information() {
         }
       {selectedSections.length>3 &&
       <div className='submit'>
-      <button className='submit_button' onClick={handleSubmit}>Choose Templates</button>
+      <button className='submit_button' onClick={handleSubmit}>Generate Resume</button>
       </div>
       }
       </div>
